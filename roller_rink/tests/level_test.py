@@ -28,7 +28,7 @@ class TestLevel(unittest.TestCase):
         self.assertEqual(self.lesson1, result)
 
     def test_level_has_level_reached(self):
-        result = self.lesson1.level_reached
+        result = self.level1.level_reached
         self.assertEqual("Beginner", result)
 
     def test_level_can_change_level_reached(self):
@@ -37,5 +37,10 @@ class TestLevel(unittest.TestCase):
         self.assertEqual("Advanced", result)
 
     def test_level_id_is_none(self):
+        result = self.level1.id
+        self.assertEqual(None, result)
 
     def test_level_id_is_not_none(self):
+        self.level1.id = 12
+        result = self.level1.id
+        self.assertEqual(12, result)
