@@ -13,3 +13,6 @@ On my app, it should be possible to:
 2. book individual skaters into lessons.
 3. view a list of all upcoming lessons.
 4. view all skaters booked for a particular lesson.  
+
+
+I predict I'm going to hit a fair bit of difficulty with the inclusion of a many-to-many relationship, but I'm confident I'll figure it out in time to produce something fun which works according to these specifications!
