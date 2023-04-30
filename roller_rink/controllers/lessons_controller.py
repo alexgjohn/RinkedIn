@@ -17,9 +17,9 @@ def lessons():
 @lessons_blueprint.route('/lessons/<id>')
 def show(id):
     lesson = lesson_repo.select(id)
-    skaters = skater_repo.select_all()
+    skaters_in_lesson = skater_repo.get_skaters_in_lesson(lesson)
     spaces = lesson.capacity - lesson.skater_count
-    return render_template('lessons/show.jinja', lesson = lesson, skaters = skaters, spaces = spaces, title = lesson.name)
+    return render_template('lessons/show.jinja', lesson = lesson, skaters_in_lesson = skaters_in_lesson, spaces = spaces, title = lesson.name)
 
 # route for new lesson - get 
 

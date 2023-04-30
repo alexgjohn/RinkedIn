@@ -31,4 +31,9 @@ level_repo.save(level2)
 level3 = Level(skater3, lesson3, "Advanced")
 level_repo.save(level3)
 
+skaters_in_lesson3 = skater_repo.get_skaters_in_lesson(lesson3)
+
+for skater in skaters_in_lesson3:
+    print(skater.full_name)
+
 

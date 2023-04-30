@@ -58,5 +58,17 @@ def get_premium_skaters():
 
 # get skaters in lesson
 
+def get_skaters_in_lesson(lesson):
+    skaters_in_lesson = []
+    sql = "SELECT skaters.* FROM skaters INNER JOIN levels ON levels.skater_id = skaters.id WHERE lesson_id = %s"
+    values = [lesson.id]
+    results = run_sql(sql, values)
+    for row in results:
+        skater = Skater(row['full_name'], row['premium_member'], row['id'])
+        skaters_in_lesson.append(skater)
+    return skaters_in_lesson
+
+
+
 # get skater by level? would need both lesson AND level as parameters. ambitious. 
 
