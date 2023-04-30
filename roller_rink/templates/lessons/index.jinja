@@ -1,12 +1,12 @@
 {% extends 'base.jinja' %}
 
 {% block content %}
-<h1>Upcoming Lessons!</h1>
+<h1>{{ title }}</h1>
 
 {% for lesson in lessons %}
 
     <p class="lesson_name">
-        <a>{{ lesson.name }}</a>
+        <a href="/lessons/{{ lesson.id }}">{{ lesson.name }}</a>, every {{ lesson.day}}!
     </p>
 
 {% endfor %}

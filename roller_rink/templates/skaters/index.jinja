@@ -1,0 +1,26 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+{% for premium_skater in premium_skaters %}
+    <p>
+        <b><a href="/skaters/{{ premium_skater.id }}">{{ premium_skater.full_name }}</a>:</b> PREMIUM MEMBER
+    </p>
+    <ul>
+        <li>Update Skater Details</li>
+        <li>Delete Skater</li>
+    </ul>
+{% endfor %}
+
+{% for skater in skaters %}
+    <p>
+        <b><a href="/skaters/{{ skater.id }}">{{ skater.full_name }}</a></b>
+    </p>
+    <ul>
+        <li>Update Skater Details</li>
+        <li>Delete Skater</li>
+    </ul>
+{% endfor %}
+
+{% endblock %}

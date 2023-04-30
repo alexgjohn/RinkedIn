@@ -7,13 +7,19 @@ import repositories.level_repository as level_repo
 
 lessons_blueprint = Blueprint("lessons", __name__)
 
-# route for lessons - get 
+
 @lessons_blueprint.route('/lessons')
 def lessons():
-    lessons = lesson_repo.select_all()
-    return render_template('lessons/index.jinja', lessons = lessons)
+    lessons = lesson_repo.get_lessons_in_day_order()
+    return render_template('lessons/index.jinja', lessons = lessons, title = "Our Upcoming Lessons!")
 
 # route for lesson - get 
+@lessons_blueprint.route('/lessons/<id>')
+def show(id):
+    lesson = lesson_repo.select(id)
+    skaters = skater_repo.select_all()
+    spaces = lesson.capacity - lesson.skater_count
+    return render_template('lessons/show.jinja', lesson = lesson, skaters = skaters, spaces = spaces, title = lesson.name)
 
 # route for new lesson - get 
 

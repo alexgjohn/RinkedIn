@@ -2,5 +2,15 @@
 
 {% block content %}
 <h1>{{ title }}</h1>
-All about this lesson
+
+
+<p>Every {{ lesson.day }} </p>
+{% if lesson.premium %}
+WARNING: THIS LESSON IS FOR PREMIUM MEMBERS ONLY!
+{% endif %}
+<p>Total capacity: {{ lesson.capacity }} </p>
+<p>There are {{ spaces }} spaces left in this lesson. Book now!</p>
+<p>Edit lesson details (Link to edit page to go here)</p>
+<p>Delete lesson</p>
+<p><a href="/lessons">Back to Lessons</a></p>
 {% endblock %}

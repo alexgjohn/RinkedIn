@@ -46,6 +46,14 @@ def update(skater):
     values = [skater.full_name, skater.premium_member, skater.id]
     run_sql(sql, values)
 
+def get_premium_skaters():
+    skaters = select_all()
+    premium_skaters = []
+    for skater in skaters:
+        if skater.premium_member:
+            premium_skaters.append(skater)
+    return premium_skaters
+
 # to be added
 
 # get skaters in lesson
