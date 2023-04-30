@@ -8,6 +8,10 @@ import repositories.level_repository as level_repo
 lessons_blueprint = Blueprint("lessons", __name__)
 
 # route for lessons - get 
+@lessons_blueprint.route('/lessons')
+def lessons():
+    lessons = lesson_repo.select_all()
+    return render_template('lessons/index.jinja', lessons = lessons)
 
 # route for lesson - get 
 
