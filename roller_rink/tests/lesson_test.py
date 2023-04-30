@@ -45,6 +45,10 @@ class TestLesson(unittest.TestCase):
         result = self.lesson1.premium
         self.assertEqual(False, result)
 
+    def test_lesson_skater_count_is_zero(self):
+        result = self.lesson1.skater_count
+        self.assertEqual(0, result)
+
     def test_lesson_id_is_none(self):
         result = self.lesson1.id
         self.assertEqual(None, result)
@@ -53,3 +57,22 @@ class TestLesson(unittest.TestCase):
         self.lesson1.id = 15
         result = self.lesson1.id
         self.assertEqual(15, result)
+
+    def test_lesson_can_increase_skater_count(self):
+        self.lesson1.increase_skater_count()
+        self.lesson1.increase_skater_count()
+        self.lesson1.increase_skater_count()
+        result = self.lesson1.skater_count
+        self.assertEqual(3, result)
+
+    def test_lesson_has_space__true(self):
+        result = self.lesson2.lesson_has_space()
+        self.assertEqual(True, result)
+
+
+    def test_lesson_has_space__false(self):
+        self.lesson2.increase_skater_count()
+        self.lesson2.increase_skater_count()
+        self.lesson2.increase_skater_count()
+        result = self.lesson2.lesson_has_space()
+        self.assertEqual(False, result)

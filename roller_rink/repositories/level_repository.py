@@ -6,13 +6,25 @@ import repositories.skater_repository as skater_repo
 import repositories.lesson_repository as lesson_repo
 
 
+# def save(level):
+#     sql = "INSERT INTO levels (skater_id, lesson_id, level_reached) VALUES (%s, %s, %s) RETURNING id"
+#     values = [level.skater.id, level.lesson.id, level.level_reached]
+#     results = run_sql(sql, values)
+#     id = results[0]['id']
+#     level.id = id
+#     return level
+
+#possible update to above to incorporate skater_count/capacity
 def save(level):
     sql = "INSERT INTO levels (skater_id, lesson_id, level_reached) VALUES (%s, %s, %s) RETURNING id"
     values = [level.skater.id, level.lesson.id, level.level_reached]
-    results = run_sql(sql, values)
-    id = results[0]['id']
-    level.id = id
-    return level
+    if level.lesson.lesson_has_space:
+        results = run_sql(sql, values)
+        id = results[0]['id']
+        level.id = id
+        level.lesson.increase_skater_count()
+        lesson_repo.update(level.lesson)
+        return level
 
 
 def select_all():
@@ -52,9 +64,10 @@ def delete(id):
 
 
 # bit confused about this one, so I might save it until Monday. Can't currently see the use for it either.
-# def update(level):
-    # sql = "UPDATE levels SET (skater_id, lesson_id, level_reached) = (%s, %s, %s) WHERE id = %s"
-    # values = 
+def update(level):
+    sql = "UPDATE levels SET (level_reached) = (%s) WHERE id = %s"
+    values = [level.level_reached, level.id]
+    run_sql(sql, values)
 
 # would also be useful to have:
     # get levels for lesson
