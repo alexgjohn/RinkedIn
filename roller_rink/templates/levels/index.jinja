@@ -3,6 +3,9 @@
 {% block content %}
 <h1>{{ title }}</h1>
 
-{# {% %} #}
+{% for level in levels %}
+<P>{{ level.skater.full_name }} attends {{ level.lesson.name }} at {{ level.level_reached }} level!</P>
+{% endfor %}
 
+<p><a href="/levels/new">Book skater to lesson</a></p>
 {% endblock %}
