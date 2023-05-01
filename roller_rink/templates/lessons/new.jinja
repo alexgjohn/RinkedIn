@@ -28,13 +28,10 @@
             <option value="True">Yes</option>
         </select>
     </div>
-    {# <div>
-        <label for="premium">Is this a premium lesson? </label>
-        <input type="checkbox" id="premium" name="premium" value="True">
-    </div> #}
     <div>
         <button type="submit">Create Lesson</button>
     </div>
 </form>
+{# this saves the lesson successfully, but doesn't pass the premium boolean through to the show page #}
 
 {% endblock %}

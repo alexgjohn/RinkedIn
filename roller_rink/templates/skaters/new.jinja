@@ -1,0 +1,23 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<form action="/skaters" method="post">
+    <div>
+        <label for="full_name">Full Name: </label>
+        <input type="text" id="full_name" name="full_name">
+    </div>
+    <div>
+        <label for="premium_member">Are they a Premium member? </label>
+        <select id="premium_member" name="premium_member" value=>
+            <option value="False">No</option>
+            <option value="True">Yes</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Register Skater</button>
+    </div>
+    
+
+{% endblock %}
