@@ -38,12 +38,12 @@ def edit_skater(id):
     skater = skater_repo.select(id)
     return render_template('skaters/edit.jinja', skater = skater, title = "Update Skater Details")
 
-# @lessons_blueprint.route('/lessons', methods = ['POST'])
-# def add_lesson():
-#     name = request.form['name']
-#     day = request.form['day']
-#     capacity = int(request.form['capacity'])
-#     premium = request.form['premium']
-#     lesson = Lesson(name, day, capacity, premium)
-#     lesson_repo.save(lesson)
-#     return redirect('/lessons')
+
+@skaters_blueprint.route('/skaters/<id>', methods = ['POST'])
+def update_skater(id):
+    full_name = request.form['full_name']
+    premium_member = request.form['premium_member']
+    skater = Skater(full_name, premium_member, id)
+    skater_repo.update(skater)
+    return redirect('/skaters')
+
