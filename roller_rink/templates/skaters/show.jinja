@@ -11,6 +11,12 @@ THIS SKATER IS A PREMIUM MEMBER!
 THIS SKATER IS <u>NOT</u> A PREMIUM MEMBER!
 {% endif %}
 
+<p>{{ skater.full_name }} is booked in for the following lessons: </p>
+
+{% for lesson in lessons_for_skater %}
+    <p><i>{{ lesson.name }}</i></p>
+{% endfor %}
+
 <p><a href="/skaters/{{ skater.id }}/edit">Update skater details</a> </p>
 
 {% endblock %}

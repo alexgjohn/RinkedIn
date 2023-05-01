@@ -9,6 +9,15 @@
         <input type="text" id="full_name" name="full_name" value="{{ skater.full_name }}" required autofocus>
     </div>
     {# could add if statement here to autofill currectly #}
+    {% if skater.premium_member == True %}
+    <div>
+        <label for="premium_member">Are they a Premium member? </label>
+        <select id="premium_member" name="premium_member">
+            <option value="True">Yes</option>
+            <option value="False">No</option>
+        </select>
+    </div>
+    {% else %}
     <div>
         <label for="premium_member">Are they a Premium member? </label>
         <select id="premium_member" name="premium_member">
@@ -16,6 +25,7 @@
             <option value="True">Yes</option>
         </select>
     </div>
+    {% endif %}
     <div>
         <button type="submit">Update Skater</button>
     </div>

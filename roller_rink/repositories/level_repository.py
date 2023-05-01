@@ -21,7 +21,6 @@ def save(level):
     results = run_sql(sql, values)
     id = results[0]['id']
     level.id = id
-    lesson_repo.update(level.lesson)
     return level
 
 

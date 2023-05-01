@@ -17,8 +17,9 @@ def skaters():
 @skaters_blueprint.route('/skaters/<id>')
 def show(id):
     skater = skater_repo.select(id)
+    lessons_for_skater = lesson_repo.get_lessons_for_skater(skater)
     title = skater.full_name
-    return render_template('skaters/show.jinja', skater = skater, title = title)
+    return render_template('skaters/show.jinja', skater = skater, lessons_for_skater = lessons_for_skater, title = title)
 
 @skaters_blueprint.route('/skaters/new', methods = ['GET'])
 def new_skater():

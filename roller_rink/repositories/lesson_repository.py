@@ -75,3 +75,14 @@ def get_lessons_in_day_order():
     lessons_in_day_order.extend(saturday)
     lessons_in_day_order.extend(sunday)
     return lessons_in_day_order
+
+def get_lessons_for_skater(skater):
+    lessons_for_skater = []
+    sql = "SELECT lessons.* FROM lessons INNER JOIN levels ON levels.lesson_id = lessons.id WHERE skater_id = %s"
+    values = [skater.id]
+    results = run_sql(sql, values)
+    for row in results:
+        lesson = Lesson(row['name'], row['day'], row['capacity'], row['premium'])
+        lessons_for_skater.append(lesson)
+    return lessons_for_skater
+
