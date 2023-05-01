@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 from flask import Blueprint
 from models.skater import Skater
+from models.lesson import Lesson
+from models.level import Level
 import repositories.lesson_repository as lesson_repo
 import repositories.skater_repository as skater_repo
 import repositories.level_repository as level_repo
@@ -14,7 +16,7 @@ def skaters():
     premium_skaters = skater_repo.get_premium_skaters()
     return render_template('skaters/index.jinja', skaters = skaters, premium_skaters = premium_skaters, title = "Meet Our Skaters!")
 
-@skaters_blueprint.route('/skaters/<id>')
+@skaters_blueprint.route('/skaters/<id>', methods = ['GET'])
 def show(id):
     skater = skater_repo.select(id)
     lessons_for_skater = lesson_repo.get_lessons_for_skater(skater)
@@ -48,3 +50,24 @@ def update_skater(id):
     skater_repo.update(skater)
     return redirect('/skaters')
 
+@skaters_blueprint.route('/skaters/<id>/book', methods = ['GET'])
+def book_skater_to_lesson(id):
+    skater = skater_repo.select(id)
+    lessons = lesson_repo.select_all()
+    return render_template('skaters/book.jinja', skater = skater, lessons = lessons, title = "Add this skater to a lesson!")
+
+
+@skaters_blueprint.route('/skaters/<id>/book', methods = ['POST'])
+def add_level_for_skater(id):
+    lesson_id = request.form['lesson_id']
+    skater = skater_repo.select(id)
+    lesson = lesson_repo.select(lesson_id)
+    level_reached = request.form['level']
+    level = Level(skater, lesson, level_reached)
+    result = level_repo.check_for_duplicate(level)
+    if result == True:
+        flash("This skater is already booked to this lesson")
+        return redirect('/skaters/<id>')
+    else:
+        level_repo.save(level)
+        return redirect('/skaters/<id>')

@@ -3,6 +3,41 @@
 {% block content %}
 <h1>{{ title }}</h1>
 
+{# <p>REMEMBER: You can only add registered skaters to existing lessons.</p>
+<p>ALSO REMEMBER: You should only add premium members to premium lessons.</p>
+<p>To add a skater to the our register, head here.</p>
+<p>To add a lesson to our schedule, head here.</p> #}
+
+<form action="/skaters/{{skater.id}}/book" method='post'>
+    {# <div>
+        <label for="skater_id">Skater: </label>
+        <select id="skater_id" name="skater_id">
+            {% for skater in skaters %}
+            <option value="{{ skater.id }}">{{ skater.full_name }}</option>
+            {% endfor %}
+        </select> #}
+    </div>
+        <label for="lesson_id">Lesson: </label>
+        <select id="lesson_id" name="lesson_id">
+            {% for lesson in lessons %}
+            <option value="{{ lesson.id }}">{{ lesson.name }}</option>
+            {% endfor %}
+        </select>
+    <div>
+        <label for="level">Level to begin student at: </label>
+        <select id="level" name="level">
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+            <option value="Expert">Expert</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Book Skater to Lesson</button>
+    </div>
+    
+</form>
+
 
 
 {% endblock %}

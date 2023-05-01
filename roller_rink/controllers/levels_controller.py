@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 from flask import Blueprint
 from models.skater import Skater
 from models.lesson import Lesson
@@ -31,8 +31,13 @@ def add_level():
     lesson = lesson_repo.select(lesson_id)
     level_reached = request.form['level']
     level = Level(skater, lesson, level_reached)
-    level_repo.save(level)
-    return redirect('/levels')
+    result = level_repo.check_for_duplicate(level)
+    if result == True:
+        flash("This skater is already booked to this lesson")
+        return redirect('/levels')
+    else:
+        level_repo.save(level)
+        return redirect('/levels')
 # check if works, then tackle issue of double booking someone
 
 

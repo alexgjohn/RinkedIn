@@ -69,3 +69,12 @@ def update(level):
 # would also be useful to have:
     # get levels for lesson
     # get levels for skater
+
+# well, this didn't work!
+def check_for_duplicate(new_level):
+    existing_levels = select_all()
+    for level in existing_levels:
+        if level.skater.id == new_level.skater.id and level.lesson.id == new_level.lesson.id:
+            return True
+        else:
+            return False
