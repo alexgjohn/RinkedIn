@@ -76,3 +76,4 @@ class TestLesson(unittest.TestCase):
         self.lesson2.increase_skater_count()
         result = self.lesson2.lesson_has_space()
         self.assertEqual(False, result)
+

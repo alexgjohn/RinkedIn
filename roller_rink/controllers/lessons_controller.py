@@ -22,8 +22,23 @@ def show(id):
     return render_template('lessons/show.jinja', lesson = lesson, skaters_in_lesson = skaters_in_lesson, spaces = spaces, title = lesson.name)
 
 # route for new lesson - get 
+@lessons_blueprint.route('/lessons/new', methods = ['GET'])
+def new_lesson():
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    return render_template('lessons/new.jinja', title = "Create a New Lesson", days = days)
 
 # route for create lesson - post
+@lessons_blueprint.route('/lessons', methods = ['POST'])
+def add_lesson():
+    name = request.form['name']
+    day = request.form['day']
+    capacity = int(request.form['capacity'])
+    premium = request.form['premium']
+    lesson = Lesson(name, day, capacity, premium)
+    lesson_repo.save(lesson)
+    return redirect('/lessons')
+
+    
     
 # route for change lesson - post 
 

@@ -8,17 +8,17 @@
 {% if lesson.premium %}
 WARNING: THIS LESSON IS FOR PREMIUM MEMBERS ONLY!
 {% endif %}
-<p>Total capacity: {{ lesson.capacity }} </p>
+<p>Total capacity: {{ lesson.capacity }}</p>
 <p>
-     {% if lesson.skater_count != 0 %}
+{# {% if lesson.skater_count > 0 %} #}
     <u>Skaters in lesson</u> 
    
         {% for skater in skaters_in_lesson %}
-            <p>{{ skater.full_name }}</p>
+            <p><a href="/skaters/{{ skater.id }}">{{ skater.full_name }}</a></p>
         {% endfor %}
-    {% endif %}
+{# {% endif %} #}
 </p>
-<p>There are {{ spaces }} spaces left in this lesson. Book now!</p>
+{# <p>There are {{ spaces }} spaces left in this lesson. Book now!</p> #}
 <p>Edit lesson details (Link to edit page to go here)</p>
 <p>Delete lesson</p>
 <p><a href="/lessons">Back to Lessons</a></p>
