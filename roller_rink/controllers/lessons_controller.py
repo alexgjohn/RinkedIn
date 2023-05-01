@@ -40,7 +40,12 @@ def add_lesson():
 
     
     
-# route for change lesson - post 
+# route for edit lesson - post 
+@lessons_blueprint.route('/lessons/<id>/edit', methods = ['GET'])
+def edit_lesson(id):
+    lesson = lesson_repo.select(id)
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    return render_template('lessons/edit.jinja', lesson = lesson, days = days, title = "Update Lesson Details")
 
 # route for update lesson - post
     

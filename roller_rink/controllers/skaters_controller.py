@@ -33,6 +33,10 @@ def add_skater():
     skater_repo.save(skater)
     return redirect('/skaters')
 
+@skaters_blueprint.route('/skaters/<id>/edit', methods = ['GET'])
+def edit_skater(id):
+    skater = skater_repo.select(id)
+    return render_template('skaters/edit.jinja', skater = skater, title = "Update Skater Details")
 
 # @lessons_blueprint.route('/lessons', methods = ['POST'])
 # def add_lesson():

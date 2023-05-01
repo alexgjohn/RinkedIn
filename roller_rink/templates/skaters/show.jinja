@@ -3,4 +3,14 @@
 {% block content %}
 <h1>{{ title }}</h1>
 
+{% if skater.premium_member %}
+THIS SKATER IS A PREMIUM MEMBER!
+
+{% else %}
+
+THIS SKATER IS <u>NOT</u> A PREMIUM MEMBER!
+{% endif %}
+
+<p><a href="/skaters/{{ skater.id }}/edit">Update skater details</a> </p>
+
 {% endblock %}
