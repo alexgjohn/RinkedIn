@@ -18,13 +18,11 @@ import repositories.lesson_repository as lesson_repo
 def save(level):
     sql = "INSERT INTO levels (skater_id, lesson_id, level_reached) VALUES (%s, %s, %s) RETURNING id"
     values = [level.skater.id, level.lesson.id, level.level_reached]
-    if level.lesson.lesson_has_space:
-        results = run_sql(sql, values)
-        id = results[0]['id']
-        level.id = id
-        level.lesson.increase_skater_count()
-        lesson_repo.update(level.lesson)
-        return level
+    results = run_sql(sql, values)
+    id = results[0]['id']
+    level.id = id
+    lesson_repo.update(level.lesson)
+    return level
 
 
 def select_all():

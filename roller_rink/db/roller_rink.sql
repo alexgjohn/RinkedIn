@@ -16,7 +16,6 @@ CREATE TABLE lessons(
     name VARCHAR(255),
     day VARCHAR(255),
     capacity INT,
-    skater_count INT,
     premium BOOLEAN
 );
 
@@ -32,8 +31,8 @@ CREATE TABLE levels(
 
 INSERT INTO skaters (full_name, premium_member) VALUES ('Wheels Smith', true);
 INSERT INTO skaters (full_name, premium_member) VALUES ('Skate Beckinsale', false);
-INSERT INTO lessons (name, day, capacity, skater_count, premium) VALUES ('Speed Skating', 'Monday', 10, 0, false);
-INSERT INTO lessons (name, day, capacity, skater_count, premium) VALUES ('Artistic Skating', 'Wednesday', 10, 0, false);
+INSERT INTO lessons (name, day, capacity, premium) VALUES ('Speed Skating', 'Monday', 10, false);
+INSERT INTO lessons (name, day, capacity, premium) VALUES ('Artistic Skating', 'Wednesday', 10, false);
 
 -- SELECT skaters.* FROM skaters INNER JOIN levels ON levels.skater_id = skaters.id;
 -- SELECT lessons.* FROM lessons INNER JOIN levels ON levels.lesson_id = lessons.id;

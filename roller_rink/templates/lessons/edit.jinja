@@ -3,14 +3,14 @@
 {% block content %}
 <h1>{{ title }}</h1>
 
-{# <form action="/lessons" method="post">
+<form action="/lessons/{{ lesson.id }}" method="post">
     <div>
         <label for="name">Name: </label>
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="name" value="{{ lesson.name }}" required autofocus>
     </div>
     <div>
         <label for="day">Day: </label>
-        <select id="day" name="day">
+        <select id="day" name="day" value="{{ lesson.day }}" required>
             {% for day in days %}
             <option value="{{ day }}">{{ day }}</option>
             {% endfor %}
@@ -18,20 +18,20 @@
     </div>
     <div>
         <label for="capacity">Capacity: </label>
-        <input type="number" id="capacity" name="capacity" min="1" value="1">
+        <input type="number" id="capacity" name="capacity" min="1" value="{{ lesson.capacity }}">
 
     </div>
     <div>
         <label for="premium">Is this a premium lesson? </label>
-        <select id="premium" name="premium" value=>
+        <select id="premium" name="premium" value="{{ lesson.premium }}">
             <option value="False">No</option>
             <option value="True">Yes</option>
         </select>
     </div>
     <div>
-        <button type="submit">Create Lesson</button>
+        <button type="submit">Update</button>
     </div>
-</form> #}
+</form>
 {# this saves the lesson successfully, but doesn't pass the premium boolean through to the show page #}
 
 {% endblock %}

@@ -33,6 +33,8 @@ level_repo.save(level3)
 level4 = Level(skater1, lesson1, "Beginner")
 level_repo.save(level4)
 
+lesson1 = Lesson("Ice Skating", "Monday", 10, False)
+lesson_repo.update(lesson1)
 
 
 

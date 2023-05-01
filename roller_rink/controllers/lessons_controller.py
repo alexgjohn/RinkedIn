@@ -18,8 +18,7 @@ def lessons():
 def show(id):
     lesson = lesson_repo.select(id)
     skaters_in_lesson = skater_repo.get_skaters_in_lesson(lesson)
-    spaces = lesson.capacity - lesson.skater_count
-    return render_template('lessons/show.jinja', lesson = lesson, skaters_in_lesson = skaters_in_lesson, spaces = spaces, title = lesson.name)
+    return render_template('lessons/show.jinja', lesson = lesson, skaters_in_lesson = skaters_in_lesson, title = lesson.name)
 
 # route for new lesson - get 
 @lessons_blueprint.route('/lessons/new', methods = ['GET'])
@@ -47,6 +46,19 @@ def edit_lesson(id):
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     return render_template('lessons/edit.jinja', lesson = lesson, days = days, title = "Update Lesson Details")
 
+
+
 # route for update lesson - post
+@lessons_blueprint.route("/lessons/<id>", methods = ['POST'])
+def update_lesson(id):
+    name = request.form['name']
+    day = request.form['day']
+    capacity = int(request.form['capacity'])
+    premium = request.form['premium']
+    lesson = Lesson(name, day, capacity, premium, id)
+    lesson_repo.update(lesson)
+    return redirect('/lessons')
+
+
     
 # route for delete lesson - post - NOT MVP

@@ -5,8 +5,8 @@ from models.level import Level
 
 
 def save(lesson):
-    sql = "INSERT INTO lessons (name, day, capacity, skater_count, premium) VALUES (%s, %s, %s, %s, %s) RETURNING *"
-    values = [lesson.name, lesson.day, lesson.capacity, lesson.skater_count, lesson.premium]
+    sql = "INSERT INTO lessons (name, day, capacity, premium) VALUES (%s, %s, %s, %s) RETURNING *"
+    values = [lesson.name, lesson.day, lesson.capacity, lesson.premium]
     results = run_sql(sql, values)
     id = results[0]['id']
     lesson.id = id
@@ -18,7 +18,7 @@ def select_all():
     sql = "SELECT * FROM lessons"
     results = run_sql(sql)
     for row in results:
-        lesson = Lesson(row['name'], row['day'], row['capacity'], row['skater_count'], row['premium'], row['id'])
+        lesson = Lesson(row['name'], row['day'], row['capacity'], row['premium'], row['id'])
         lessons.append(lesson)
     return lessons 
 
@@ -30,7 +30,7 @@ def select(id):
     results = run_sql(sql, values)
     if results:
         result = results[0]
-        lesson = Lesson(result['name'], result['day'], result['capacity'], result['skater_count'], result['premium'], result['id'])
+        lesson = Lesson(result['name'], result['day'], result['capacity'], result['premium'], result['id'])
     return lesson
 
 
@@ -46,8 +46,8 @@ def delete(id):
 
 
 def update(lesson):
-    sql = "UPDATE lessons SET (name, day, capacity, skater_count, premium) = (%s, %s, %s, %s, %s) WHERE id = %s"
-    values = [lesson.name, lesson.day, lesson.capacity, lesson.skater_count, lesson.premium, lesson.id]
+    sql = "UPDATE lessons SET (name, day, capacity, premium) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [lesson.name, lesson.day, lesson.capacity, lesson.premium, lesson.id]
     run_sql(sql, values)
 
 def get_lessons_by_day(day):
