@@ -18,9 +18,14 @@ WARNING: THIS LESSON IS FOR PREMIUM MEMBERS ONLY!
         {% endfor %}
 
 </p>
+<p>That means there are {{ spaces_in_lesson }} spaces left in this lesson!</p>
 
-<p><a href="/lessons/{{ lesson.id }}/edit">Edit lesson details</a> </p>
+{% if lesson.capacity > skater_count %}
 <p><a href="/lessons/{{ lesson.id }}/book">Book Skater onto This Lesson</a> </p>
+{% else %}
+<p><i>Look out for lessons that still have space!</i></p>
+{% endif %}
+<p><a href="/lessons/{{ lesson.id }}/edit">Edit lesson details</a> </p>
 <form class="delete-form" action="/lessons/{{ lesson.id }}/delete" method="POST">
         <button class="trash-button">REMOVE LESSON</button>
 </form>

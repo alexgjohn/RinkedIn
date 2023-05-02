@@ -5,6 +5,7 @@
 
 {% if lesson.premium %}
 <p>WARNING: This is a premium lesson and only premium skaters may book!</p>
+{% endif %}
 
 <form action="/lessons/{{lesson.id}}/book" method='post'>
     <div>
