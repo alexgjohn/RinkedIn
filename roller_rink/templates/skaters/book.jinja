@@ -9,19 +9,23 @@
 <p>To add a lesson to our schedule, head here.</p> #}
 
 <form action="/skaters/{{skater.id}}/book" method='post'>
-    {# <div>
+    <div>
         <label for="skater_id">Skater: </label>
         <select id="skater_id" name="skater_id">
-            {% for skater in skaters %}
             <option value="{{ skater.id }}">{{ skater.full_name }}</option>
-            {% endfor %}
-        </select> #}
+        </select>
     </div>
         <label for="lesson_id">Lesson: </label>
         <select id="lesson_id" name="lesson_id">
-            {% for lesson in lessons %}
-            <option value="{{ lesson.id }}">{{ lesson.name }}</option>
-            {% endfor %}
+            {% if skater.premium_member %}
+                {% for lesson in all_lessons %}
+                    <option value="{{ lesson.id }}">{{ lesson.name }}</option>
+                {% endfor %}
+            {% else %}
+                {% for lesson in not_premium_lessons %}
+                    <option value="{{ lesson.id }}">{{ lesson.name }}</option>
+                {% endfor %}
+            {% endif %}
         </select>
     <div>
         <label for="level">Level to begin student at: </label>

@@ -53,14 +53,16 @@ def update_skater(id):
 @skaters_blueprint.route('/skaters/<id>/book', methods = ['GET'])
 def book_skater_to_lesson(id):
     skater = skater_repo.select(id)
-    lessons = lesson_repo.select_all()
-    return render_template('skaters/book.jinja', skater = skater, lessons = lessons, title = "Add this skater to a lesson!")
+    all_lessons = lesson_repo.select_all()
+    not_premium_lessons = lesson_repo.get_lessons_not_premium()
+    return render_template('skaters/book.jinja', skater = skater, all_lessons = all_lessons, not_premium_lessons = not_premium_lessons, title = "Add this skater to a lesson!")
 
 
 @skaters_blueprint.route('/skaters/<id>/book', methods = ['POST'])
 def add_level_for_skater(id):
     lesson_id = request.form['lesson_id']
-    skater = skater_repo.select(id)
+    skater_id = request.form['skater_id']
+    skater = skater_repo.select(skater_id)
     lesson = lesson_repo.select(lesson_id)
     level_reached = request.form['level']
     level = Level(skater, lesson, level_reached)

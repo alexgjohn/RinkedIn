@@ -82,7 +82,16 @@ def get_lessons_for_skater(skater):
     values = [skater.id]
     results = run_sql(sql, values)
     for row in results:
-        lesson = Lesson(row['name'], row['day'], row['capacity'], row['premium'])
+        lesson = Lesson(row['name'], row['day'], row['capacity'], row['premium'], row['id'])
         lessons_for_skater.append(lesson)
     return lessons_for_skater
+
+def get_lessons_not_premium():
+    not_premium_lessons = []
+    results = select_all()
+    for lesson in results:
+        if lesson.premium != True:
+            not_premium_lessons.append(lesson)
+    return not_premium_lessons
+
 

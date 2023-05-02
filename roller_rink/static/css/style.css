@@ -23,6 +23,7 @@ h1 {
 a {
     color: rgb(73, 229, 253);
     text-decoration: none;
+    display: block;
 }
 
 a:hover {

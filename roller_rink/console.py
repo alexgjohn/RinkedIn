@@ -21,7 +21,7 @@ lesson1 = Lesson("Speed Skating", "Monday", 10, False)
 lesson_repo.save(lesson1)
 lesson2 = Lesson("Artistic Skating", "Wednesday", 12, False)
 lesson_repo.save(lesson2)
-lesson3 = Lesson("Wheelie Cool Disco Dancing", "Saturday", 8, False)
+lesson3 = Lesson("Wheelie Cool Disco Dancing", "Saturday", 8, True)
 lesson_repo.save(lesson3)
 
 level1 = Level(skater1, lesson3, "Beginner")
@@ -35,6 +35,10 @@ level_repo.save(level4)
 
 lesson1 = Lesson("Ice Skating", "Monday", 10, False)
 lesson_repo.update(lesson1)
+
+results = lesson_repo.get_lessons_not_premium()
+for result in results:
+    print(result.name)
 
 
 
