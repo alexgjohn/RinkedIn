@@ -76,5 +76,4 @@ def check_for_duplicate(new_level):
     for level in existing_levels:
         if level.skater.id == new_level.skater.id and level.lesson.id == new_level.lesson.id:
             return True
-        else:
-            return False
+    return False

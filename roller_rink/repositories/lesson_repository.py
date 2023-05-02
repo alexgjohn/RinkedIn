@@ -86,6 +86,31 @@ def get_lessons_for_skater(skater):
         lessons_for_skater.append(lesson)
     return lessons_for_skater
 
+
+# do I need ANOTHER for loop in here to get it working?
+def get_available_lessons_for_skater(skater):
+    available_lessons_for_skater = []
+    sql = "SELECT lessons.* FROM lessons INNER JOIN levels ON levels.lesson_id = lessons.id WHERE skater_id != %s"
+    values = [skater.id]
+    results = run_sql(sql, values)
+    for row in results:
+        lesson = Lesson(row['name'], row['day'], row['capacity'], row['premium'], row['id'])
+        available_lessons_for_skater.append(lesson)
+    return available_lessons_for_skater
+
+
+
+    # available_lessons_for_skater = []
+    # all_lessons = select_all()
+    # booked_lessons = get_lessons_for_skater(skater)
+    # for lesson in all_lessons:
+    #     id = lesson.id
+    #     for booked_lesson in booked_lessons:
+    #         if booked_lesson.id != id:
+    #             available_lessons_for_skater.append(lesson)
+    # return available_lessons_for_skater
+
+
 def get_lessons_not_premium():
     not_premium_lessons = []
     results = select_all()

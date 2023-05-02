@@ -69,7 +69,12 @@ def add_level_for_skater(id):
     result = level_repo.check_for_duplicate(level)
     if result == True:
         flash("This skater is already booked to this lesson")
-        return redirect('/skaters/<id>')
+        return redirect('/skaters')
     else:
         level_repo.save(level)
-        return redirect('/skaters/<id>')
+        return redirect('/skaters')
+    
+@skaters_blueprint.route('/skaters/<id>/delete', methods=['POST'])
+def delete_skater(id):
+    skater_repo.delete(id)
+    return render_template('home.jinja')

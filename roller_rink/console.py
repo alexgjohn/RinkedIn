@@ -36,9 +36,14 @@ level_repo.save(level4)
 lesson1 = Lesson("Ice Skating", "Monday", 10, False)
 lesson_repo.update(lesson1)
 
-results = lesson_repo.get_lessons_not_premium()
+# results = lesson_repo.get_lessons_not_premium()
+# for result in results:
+#     print(result.name)
+
+results = lesson_repo.get_available_lessons_for_skater(skater1)
 for result in results:
     print(result.name)
+
 
 
 

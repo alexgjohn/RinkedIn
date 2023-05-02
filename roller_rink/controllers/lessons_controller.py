@@ -18,7 +18,8 @@ def lessons():
 def show(id):
     lesson = lesson_repo.select(id)
     skaters_in_lesson = skater_repo.get_skaters_in_lesson(lesson)
-    return render_template('lessons/show.jinja', lesson = lesson, skaters_in_lesson = skaters_in_lesson, title = lesson.name)
+    skater_count = len(skaters_in_lesson)
+    return render_template('lessons/show.jinja', lesson = lesson, skaters_in_lesson = skaters_in_lesson, title = lesson.name, skater_count = skater_count)
 
 # route for new lesson - get 
 @lessons_blueprint.route('/lessons/new', methods = ['GET'])
@@ -62,3 +63,7 @@ def update_lesson(id):
 
     
 # route for delete lesson - post - NOT MVP
+@lessons_blueprint.route('/lessons/<id>/delete', methods=['POST'])
+def delete_lesson(id):
+    lesson_repo.delete(id)
+    return render_template('home.jinja')

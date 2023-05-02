@@ -8,20 +8,12 @@
     <p>
         <b><a href="/skaters/{{ skater.id }}">{{ skater.full_name }}</a>:</b> PREMIUM MEMBER
     </p>
-    <ul>
-        <li>Update Skater Details</li>
-        <li>Delete Skater</li>
-    </ul>
 
 {% else %}
 
     <p>
         <b><a href="/skaters/{{ skater.id }}">{{ skater.full_name }}</a></b>
     </p>
-    <ul>
-        <li>Update Skater Details</li>
-        <li>Delete Skater</li>
-    </ul>
 
 {% endif %}
 {% endfor %}
