@@ -16,5 +16,9 @@ def home():
 def about():
     return render_template('about.jinja', title = "About Us")
 
+@app.route('/error')
+def error():
+    return render_template('error.jinja', title = "Whoops!")
+
 if __name__ == '__main__':
     app.run(debug=True)

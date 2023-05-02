@@ -4,8 +4,8 @@ body {
     background-repeat: no-repeat;
     color: #fdfdfd;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    padding: 0px;
-    margin: 0px;
+    padding: 2px;
+    margin: 5px; 
 }
 
 body > main > nav > ul {
@@ -31,4 +31,18 @@ a:hover {
 
 #content {
     padding: 8px;
+}
+
+#header {
+    display: flex;
+    /* justify-content: space-evenly; */
+    align-items: flex-start;
+}
+
+#header > h2 {
+    font-size: xx-large;
+}
+
+#header > nav > ul {
+    list-style: none;
 }

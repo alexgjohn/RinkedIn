@@ -67,3 +67,12 @@ def update_lesson(id):
 def delete_lesson(id):
     lesson_repo.delete(id)
     return render_template('home.jinja')
+
+
+@lessons_blueprint.route('/lessons/<id>/book', methods=['GET'])
+def book_skater_to_lesson(id):
+    lesson = lesson_repo.select(id)
+    skaters = skater_repo.select_all()
+    premium_skaters = skater_repo.get_premium_skaters()
+    return render_template('lessons/book.jinja', title = "Add a skater to this lesson!", lesson = lesson, skaters = skaters, premium_skaters = premium_skaters)
+

@@ -3,6 +3,41 @@
 {% block content %}
 <h1>{{ title }}</h1>
 
+{% if lesson.premium %}
+<p>WARNING: This is a premium lesson and only premium skaters may book!</p>
 
+<form action="/lessons/{{lesson.id}}/book" method='post'>
+    <div>
+        <label for="skater_id">Skater: </label>
+        <select id="skater_id" name="skater_id">
+            {% if lesson.premium %}
+            {% for skater in premium_skaters %}
+            <option value="{{ skater.id }}">{{ skater.full_name }}</option>
+            {% endfor %}
+            {% else %}
+            {% for skater in skaters %}
+            <option value="{{ skater.id }}">{{ skater.full_name }}</option>
+            {% endfor %}
+            {% endif %}
+        </select>
+    </div>
+        <label for="lesson_id">Lesson: </label>
+        <select id="lesson_id" name="lesson_id">
+            <option value="{{ lesson.id }}">{{ lesson.name }}</option>
+        </select>
+    <div>
+        <label for="level">Level to begin student at: </label>
+        <select id="level" name="level">
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+            <option value="Expert">Expert</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Book Skater to Lesson</button>
+    </div>
+    
+</form>
 
 {% endblock %}

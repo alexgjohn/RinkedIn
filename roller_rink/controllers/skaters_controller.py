@@ -68,8 +68,7 @@ def add_level_for_skater(id):
     level = Level(skater, lesson, level_reached)
     result = level_repo.check_for_duplicate(level)
     if result == True:
-        flash("This skater is already booked to this lesson")
-        return redirect('/skaters')
+        return redirect('/error')
     else:
         level_repo.save(level)
         return redirect('/skaters')
