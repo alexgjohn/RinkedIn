@@ -1,5 +1,5 @@
 body {
-    background: url('/static/images/background.jpg');
+    background: url('/static/images/roller-skates-low-contrast.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     color: #fdfdfd;
@@ -35,7 +35,7 @@ a:hover {
 
 #header {
     display: flex;
-    /* justify-content: space-evenly; */
+    justify-content: space-between;
     align-items: flex-start;
 }
 

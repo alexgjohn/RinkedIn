@@ -8,12 +8,14 @@
     <p>
         <b><a href="/skaters/{{ skater.id }}">{{ skater.full_name }}</a>:</b> PREMIUM MEMBER
     </p>
+    <hr>
 
 {% else %}
 
     <p>
         <b><a href="/skaters/{{ skater.id }}">{{ skater.full_name }}</a></b>
     </p>
+    <hr>
 
 {% endif %}
 {% endfor %}

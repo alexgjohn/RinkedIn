@@ -76,4 +76,4 @@ def add_level_for_skater(id):
 @skaters_blueprint.route('/skaters/<id>/delete', methods=['POST'])
 def delete_skater(id):
     skater_repo.delete(id)
-    return render_template('home.jinja')
+    return redirect('/skaters')
