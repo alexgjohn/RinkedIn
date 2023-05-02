@@ -1,0 +1,30 @@
+body {
+    background: url('/static/images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fdfdfd;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+body > main > nav > ul {
+    color: #ffff;
+    list-style: none;
+    text-decoration: none;
+}
+
+h1 {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    margin: 0px;
+    padding: 10px; 
+}
+
+a {
+    color: rgb(73, 229, 253);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
