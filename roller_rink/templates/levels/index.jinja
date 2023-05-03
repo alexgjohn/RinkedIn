@@ -4,7 +4,11 @@
 <h1>{{ title }}</h1>
 
 {% for level in levels %}
-<P>{{ level.skater.full_name }} attends {{ level.lesson.name }} at {{ level.level_reached }} level!</P>
+<div id="level-list-item">{{ level.skater.full_name }} attends {{ level.lesson.name }} at {{ level.level_reached }} level!
+    <form class="delete-form" action="/levels/{{ level.id }}/delete" method="POST">
+            <button class="trash-button">REMOVE SKATER FROM LESSON</button>
+    </form>
+</div>
 <hr>
 {% endfor %}
 

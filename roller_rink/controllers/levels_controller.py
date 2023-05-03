@@ -39,4 +39,9 @@ def add_level():
         return redirect('/levels')
 # check if works, then tackle issue of double booking someone
 
+@levels_blueprint.route('/levels/<id>/delete', methods = ['POST'])
+def delete_level(id):
+    level_repo.delete(id)
+    return redirect('/levels')
+
 

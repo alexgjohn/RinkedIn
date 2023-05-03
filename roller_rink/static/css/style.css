@@ -63,3 +63,9 @@ a:hover {
     padding: 15px;
     width: 140vw;
 }
+
+#level-list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
