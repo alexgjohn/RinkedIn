@@ -5,14 +5,14 @@
 
 {% for skater in skaters %}
 {% if skater.premium_member %}
-    <p>
+    <p class="skater-details">
         <b><a href="/skaters/{{ skater.id }}">{{ skater.full_name }}</a>:</b> PREMIUM MEMBER
     </p>
     <hr>
 
 {% else %}
 
-    <p>
+    <p class="skater-details">
         <b><a href="/skaters/{{ skater.id }}">{{ skater.full_name }}</a></b>
     </p>
     <hr>
