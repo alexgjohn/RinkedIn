@@ -7,38 +7,40 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}"> 
 </head>
-<body>
-  <div class="grid-container">
-    <main class="flex flex--row">
-      <section  class="header" id="header">
-        <nav>
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/lessons">Lessons</a>
-            </li>
-            <li>
-              <a href="/skaters">Skaters</a>
-            </li>
-            <li>
-              <a href="/about">About</a>
-            </li>
-            <li>
-              <a href="/levels">Bookings and Levels</a>
-            </li>
-          </ul>
-        </nav>
-        <h2>AGJ Roller Rink</h2>
-        <h3>Track your bookings, live your dream</h3>
-      </section>
-    <section id="content">
-        {% block content %}
+<div class="grid-container">
+  <body>
+      <main class="flex flex--row">
+        <section  class="header" id="header">
+          <div class="nav-bar">
+            <nav>
+              <ul>
+                <li>
+                  <a href="/">Home</a>
+                </li>
+                <li>
+                  <a href="/lessons">Lessons</a>
+                </li>
+                <li>
+                  <a href="/skaters">Skaters</a>
+                </li>
+                <li>
+                  <a href="/about">About</a>
+                </li>
+                <li>
+                  <a href="/levels">Bookings and Levels</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <h2>AGJ Roller Rink</h2>
+          <h3>Track your bookings, live your dream</h3>
+        </section>
+      <section class="main" id="content">
+          {% block content %}
 
-        {% endblock%}
-    </section>
-    </main>
-  </div>
-</body>
+          {% endblock%}
+      </section>
+      </main>
+  </body>
+</div>
 </html>

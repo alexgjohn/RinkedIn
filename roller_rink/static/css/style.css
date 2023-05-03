@@ -8,11 +8,12 @@ body {
     margin: 5px; 
 }
 
-body > main > nav > ul {
+.nav-bar > nav > ul {
     color: #ffff;
     list-style: none;
     text-decoration: none;
 }
+
 
 h1 {
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -45,4 +46,20 @@ a:hover {
 
 #header > nav > ul {
     list-style: none;
+}
+
+.header {grid-area: header;}
+.nav-bar {grid-area: nav-bar;}
+.main {grid-area: main;}
+
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+    'nav-bar header header'
+    'nav-bar main main'
+    'nav-bar main main'
+    'nav-bar main main';
+    gap: 5px;
+    padding: 15px;
+    width: 140vw;
 }
