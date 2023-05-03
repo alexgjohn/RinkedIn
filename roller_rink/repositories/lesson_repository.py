@@ -2,6 +2,7 @@ from db.run_sql import run_sql
 from models.skater import Skater
 from models.lesson import Lesson
 from models.level import Level
+import repositories.skater_repository as skater_repo
 
 
 def save(lesson):
@@ -118,5 +119,27 @@ def get_lessons_not_premium():
         if lesson.premium != True:
             not_premium_lessons.append(lesson)
     return not_premium_lessons
+
+def get_lessons_with_space():
+    lessons_with_space = []
+    results = select_all()
+    for lesson in results:
+        skaters_in_lesson = skater_repo.get_skaters_in_lesson(lesson)
+        skater_count = len(skaters_in_lesson)
+        if lesson.capacity > skater_count:
+            lessons_with_space.append(lesson)
+    return lessons_with_space
+
+def get_not_premium_lessons_with_space():
+    not_premium_lessons_with_space = []
+    results = get_lessons_not_premium()
+    for lesson in results:
+        skaters_in_lesson = skater_repo.get_skaters_in_lesson(lesson)
+        skater_count = len(skaters_in_lesson)
+        if lesson.capacity > skater_count:
+            not_premium_lessons_with_space.append(lesson)
+    return not_premium_lessons_with_space
+
+        
 
 

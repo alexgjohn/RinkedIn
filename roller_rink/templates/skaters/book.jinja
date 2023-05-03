@@ -3,11 +3,9 @@
 {% block content %}
 <h1>{{ title }}</h1>
 
-{# <p>REMEMBER: You can only add registered skaters to existing lessons.</p>
-<p>ALSO REMEMBER: You should only add premium members to premium lessons.</p>
-<p>To add a skater to the our register, head here.</p>
-<p>To add a lesson to our schedule, head here.</p> #}
-
+{% if skater.premium_member != True %}
+<p><i>REMINDER: This skater is not a premium member and is not able to book premium lessons.</i></p>
+{% endif %}
 <form action="/skaters/{{skater.id}}/book" method='post'>
     <div>
         <label for="skater_id">Skater: </label>
@@ -41,6 +39,8 @@
     </div>
     
 </form>
+
+<p><i>Not seeing the lesson you want? It may be fully booked!</i></p>
 
 
 

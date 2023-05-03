@@ -53,8 +53,8 @@ def update_skater(id):
 @skaters_blueprint.route('/skaters/<id>/book', methods = ['GET'])
 def book_skater_to_lesson(id):
     skater = skater_repo.select(id)
-    all_lessons = lesson_repo.select_all()
-    not_premium_lessons = lesson_repo.get_lessons_not_premium()
+    all_lessons = lesson_repo.get_lessons_with_space()
+    not_premium_lessons = lesson_repo.get_not_premium_lessons_with_space()
     return render_template('skaters/book.jinja', skater = skater, all_lessons = all_lessons, not_premium_lessons = not_premium_lessons, title = "Add this skater to a lesson!")
 
 
