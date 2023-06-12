@@ -41,7 +41,7 @@ a:hover {
 }
 
 #header > h2 {
-    font-size: xx-large;
+    font-size: 60px;
 }
 
 #header > nav > ul {
@@ -55,13 +55,12 @@ a:hover {
 .grid-container {
     display: grid;
     grid-template-areas: 
-    'nav-bar header header'
-    'nav-bar main main'
-    'nav-bar main main'
-    'nav-bar main main';
+    'nav-bar header'
+    'nav-bar main'
+    'nav-bar main';
     gap: 5px;
     padding: 15px;
-    width: 140vw;
+    width: 100vw;
 }
 
 #level-list-item {
@@ -76,8 +75,20 @@ a:hover {
 }
 
 #main-title {
+    background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #b01d4e 67%,
+    #ccc738 100%);
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    border-style: double;
+    border:  1px solid rgb(48, 6, 43);
+    border-radius: 10px; 
+}
+
+#slogan {
+    background-color: rgb(250, 222, 222);
+    color: black;
 }
 
 .lesson-name:hover {

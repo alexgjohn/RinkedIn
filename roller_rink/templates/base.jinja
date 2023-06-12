@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AGJ Roller Rink</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+  <title>RinkedIn</title>
+  {# <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}"> #}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}"> 
+  {# <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">  #}
 </head>
 <div class="grid-container">
   <body>
@@ -32,8 +32,8 @@
               </ul>
             </nav>
           </div>
-          <h2 id="main-title">AGJ Roller Rink</h2>
-          <h3>Track your bookings. Like a GOD.</h3>
+          <h2 id="main-title">RinkedIn</h2>
+          <h3 id="slogan">Track your bookings. Like a GOD.</h3>
         </section>
       <section class="main" id="content">
           {% block content %}

@@ -3,6 +3,8 @@
 {% block content %}
 <h1>{{ title }}</h1>
 
+<p><i>REMINDER: You cannot reduce the capacity to less than the number of skaters already booked in.</i></p>
+
 <form action="/lessons/{{ lesson.id }}" method="post">
     <div>
         <label for="name">Name: </label>
@@ -18,7 +20,7 @@
     </div>
     <div>
         <label for="capacity">Capacity: </label>
-        <input type="number" id="capacity" name="capacity" min="1" value="{{ lesson.capacity }}">
+        <input type="number" id="capacity" name="capacity" min="{{ skater_count }}" value="{{ lesson.capacity }}">
 
     </div>
     <div>

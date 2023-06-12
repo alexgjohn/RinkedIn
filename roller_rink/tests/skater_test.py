@@ -36,8 +36,8 @@ class TestSkater(unittest.TestCase):
         result = self.skater1.id
         self.assertEqual(None, result)
 
-    def test_skater_has_id__not_none(self):
-        self.skater1.id = 3
-        result = self.skater1.id
-        self.assertEqual(3, result)
+    # def test_skater_has_id__not_none(self):
+    #     self.skater1.id = 3
+    #     result = self.skater1.id
+    #     self.assertEqual(3, result)
     

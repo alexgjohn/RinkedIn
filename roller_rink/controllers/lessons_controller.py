@@ -47,8 +47,10 @@ def add_lesson():
 @lessons_blueprint.route('/lessons/<id>/edit', methods = ['GET'])
 def edit_lesson(id):
     lesson = lesson_repo.select(id)
+    skaters_in_lesson = skater_repo.get_skaters_in_lesson(lesson)
+    skater_count = len(skaters_in_lesson)
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    return render_template('lessons/edit.jinja', lesson = lesson, days = days, title = "Update Lesson Details")
+    return render_template('lessons/edit.jinja', lesson = lesson, skater_count = skater_count, days = days, title = "Update Lesson Details")
 
 
 
